@@ -1,0 +1,21 @@
+version: '3.1'
+services:
+  lanproxy-server:
+    image: hub.dosec.cn/library/lanproxy:2019-08-05T18.32.49
+    container_name: lanproxy-server
+    # environment:
+    #  # 配置你的账号，默认admin
+    #  - LANPROXY_USERNAME=admin
+    #  # 配置你的密码，默认admin
+    #  - LANPROXY_PASSWORD=8cjC3fw3CVEw2WQ6
+    volumes:
+     # 用于保存创建的配置文件，避免重启服务后配置消失
+     - ./config.json:/root/.lanproxy/config.json
+    network_mode: "host"
+    # ports:
+    #  - 8090:8090 # web界面端口
+    #  - 4900:4900
+    #  - 4993:4993
+    #  - 9008-9009:9008-9009 # 可映射为内网端口
+    #  - 9000-9100:9000-9100
+    restart: always
